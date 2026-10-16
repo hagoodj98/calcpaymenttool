@@ -31,7 +31,7 @@ const FACTORS = {
 };
 // Rough US consumption-based averages from UC Berkeley CoolClimate.
 const NATIONAL_AVERAGE_PER_PERSON = 19000; // kg CO2e per person per year
-
+//
 app.post("/handle-calc", (req, res) => {
   try {
     const body = req.body;
