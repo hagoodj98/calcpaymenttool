@@ -3,11 +3,11 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { footprintSchema } from "./validation-schema.js";
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 app.use(express.json());
 // CORS configuration
 const corsOptions = {
-  origin: ["http://localhost:3000", "http://carbon-footprint.local"],
+  origin: [process.env.WP_BASE_URL, "http://carbon-footprint.local"],
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 };
