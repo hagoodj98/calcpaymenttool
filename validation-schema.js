@@ -2,7 +2,14 @@ import { z } from "zod";
 
 const optionalNumber = z.preprocess(
   (value) => (value === "" || value == null ? undefined : value),
-  z.coerce.number().nonnegative().default(0),
+  z.coerce
+    .number({
+      invalid_type_error: "Please enter a valid number",
+    })
+    .nonnegative({
+      message: "Value must be 0 or greater",
+    })
+    .default(0),
 );
 
 export const footprintSchema = z.object({
@@ -45,6 +52,9 @@ export const footprintSchema = z.object({
     .transform((val) => val.toLowerCase()),
   "household-size": z.preprocess(
     (value) => (value === "" || value == null ? undefined : value),
-    z.coerce.number().positive().default(1),
+    z.coerce
+      .number()
+      .int("Household size must be a whole number")
+      .min(1, "Household size must be at least 1"),
   ),
 });
