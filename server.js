@@ -7,7 +7,7 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 // CORS configuration
 const corsOptions = {
-  origin: [process.env.WP_BASE_URL, "http://carbon-footprint.local"],
+  origin: [process.env.BASE_URL_LIVE_SITE, process.env.WP_BASE_URL_LOCAL],
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 };
